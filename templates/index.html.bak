@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Sajid Web Writer — Browser UI</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="hdr-left">
+        <div class="title">SAJID MS OFFICE WRITER WINDOW 💚</div>
+      </div>
+
+      <div class="hdr-toolbar">
+        <button class="scroll-btn" id="tb-left">&lt;&lt;</button>
+        <div class="toolbar_inner" id="toolbar_inner" role="toolbar" aria-label="Editor toolbar">
+          <!-- main action buttons -->
+          <button id="newBtn" class="primary">New</button>
+          <button id="openBtn">Open</button>
+          <button id="saveBtn" class="primary">Save</button>
+          <button id="saveAsBtn">Save As</button>
+          <button id="printBtn">Print</button>
+
+          <button data-cmd="undo">Undo</button>
+          <button data-cmd="redo">Redo</button>
+          <button data-cmd="cut">Cut</button>
+          <button data-cmd="copy">Copy</button>
+          <button data-cmd="paste">Paste</button>
+
+          <!-- formatting -->
+          <button data-cmd="bold"><b>B</b></button>
+          <button data-cmd="italic"><i>I</i></button>
+          <button data-cmd="underline"><u>U</u></button>
+
+          <input id="colorPicker" type="color" title="Text color" />
+
+          <button id="align-left">Left</button>
+          <button id="align-center">Center</button>
+          <button id="align-right">Right</button>
+
+          <label class="small-label">Font</label>
+          <select id="fontSelect" aria-label="Font select">
+            <option value="inherit">(document)</option>
+            <option value="Noto Sans Devanagari">Noto Sans Devanagari</option>
+            <option value="Noto Sans">Noto Sans</option>
+            <option value="DejaVu Sans">DejaVu Sans</option>
+            <option value="Liberation Sans">Liberation Sans</option>
+            <option value="Arial">Arial</option>
+          </select>
+
+          <label class="small-label">Size</label>
+          <input id="sizeBox" type="number" min="8" max="72" value="12" style="width:64px" />
+          <button id="applySizeBtn">Set Size (Line)</button>
+
+          <button id="fontIncrease">A+</button>
+          <button id="fontDecrease">A-</button>
+
+          <button id="clearFormatting">Clear</button>
+
+          <button id="previewBtn">Preview HTML</button>
+          <button id="exportPdfBtn" class="accent">Export PDF</button>
+          <button id="sendDevicePdfBtn">Send device PDF</button>
+          <button id="exportWKBtn">Export via WK</button>
+          <button id="themeToggle">Theme</button>
+        </div>
+        <button class="scroll-btn" id="tb-right">&gt;&gt;</button>
+      </div>
+
+      <div class="hdr-right">
+        <input id="openName" placeholder="filename (for load/save)" />
+      </div>
+    </header>
+
+    <div class="container">
+      <aside class="left-toolbar">
+        <div class="toolbar-row">
+          <button id="insertImageBtn">Insert Image</button>
+          <input id="imageFile" type="file" accept="image/*" style="display:none"/>
+
+          <button id="insertTableBtn">Insert Table</button>
+          <button id="insertSheetBtn">Insert Sheet</button>
+
+          <button id="insertStickerBtn">Stickers</button>
+          <button id="insertSpecialBtn">Special Chars</button>
+
+          <button id="numberedBtn">Numbered</button>
+          <button id="bulletedBtn">Bullets</button>
+
+          <button id="highlightBtn">Highlight</button>
+          <input id="highlightColor" type="color" value="#ffff66" style="width:100%" />
+
+          <button id="findReplaceBtn">Find / Replace</button>
+          <button id="importBtn">Import from Storage</button>
+          <button id="exportRtfBtn">Export RTF</button>
+          <button id="previewServerBtn">Preview (server)</button>
+        </div>
+      </aside>
+
+      <main>
+        <div id="editor" contenteditable="true" spellcheck="true" aria-label="Editor area"></div>
+      </main>
+
+      <aside class="right-panel">
+        <h4>Uploads</h4>
+        <label class="small-label">Upload image and insert:</label>
+        <input id="uploadImageField" type="file" accept="image/*"/>
+        <div style="height:12px;"></div>
+        <div id="status">Ready</div>
+        <div id="savedList"></div>
+      </aside>
+    </div>
+
+    <!-- selection floating toolbar (our custom popup shown on text select) -->
+    <div id="selectionToolbar" class="selection-toolbar" style="display:none;position:absolute;">
+      <button data-scmd="bold">B</button>
+      <button data-scmd="italic">I</button>
+      <button data-scmd="underline">U</button>
+      <input id="selColorInput" type="color" title="Apply color" style="width:36px;height:28px;border-radius:4px;border:0;margin:0 6px"/>
+      <button id="selInc">⬆️</button>
+      <button id="selDec">⬇️</button>
+      <button data-scmd="copy">Copy</button>
+      <button data-scmd="cut">Cut</button>
+      <button id="selClose">✕</button>
+    </div>
+
+    <!-- modals (hidden) -->
+    <div id="sheetModal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <h3>Insert Sheet</h3>
+        <label>Rows: <input id="sheetRows" type="number" value="5" min="1"/></label>
+        <label>Cols: <input id="sheetCols" type="number" value="5" min="1"/></label>
+        <div style="margin-top:8px;">
+          <button id="buildSheetBtn">Build</button>
+          <button id="insertSheetAsTableBtn">Insert as Table</button>
+          <button id="insertSheetAsTsvBtn">Insert as TSV</button>
+          <button id="closeSheetBtn">Close</button>
+        </div>
+        <div id="sheetPreview" style="margin-top:8px;max-height:280px;overflow:auto;"></div>
+      </div>
+    </div>
+
+    <div id="stickerModal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <h3>Stickers / Emoji</h3>
+        <div id="stickerGrid"></div>
+        <div style="margin-top:8px"><button id="closeStickerBtn">Close</button></div>
+      </div>
+    </div>
+
+    <div id="specialModal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <h3>Special Characters</h3>
+        <div id="specialGrid"></div>
+        <div style="margin-top:8px"><button id="closeSpecialBtn">Close</button></div>
+      </div>
+    </div>
+
+    <div id="findModal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <h3>Find & Replace</h3>
+        <label>Find: <input id="findInput" type="text" style="width:80%"/></label><br/>
+        <label>Replace: <input id="replaceInput" type="text" style="width:80%"/></label>
+        <div style="margin-top:8px;">
+          <button id="findNextBtn">Find Next</button>
+          <button id="replaceOneBtn">Replace One</button>
+          <button id="replaceAllBtn">Replace All</button>
+          <button id="closeFindBtn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- image size modal -->
+    <div id="imageSizeModal" class="modal" aria-hidden="true" style="align-items:center;justify-content:center;">
+      <div class="modal-content" style="max-width:360px;">
+        <h3>Insert Image - Size</h3>
+        <div id="imagePreviewWrap" style="text-align:center;margin-bottom:8px;"></div>
+        <div style="display:flex;gap:8px;justify-content:center;">
+          <button id="imgSmall">Small</button>
+          <button id="imgMedium">Medium</button>
+          <button id="imgLarge">Large</button>
+          <button id="imgFull">Full</button>
+          <button id="imgCancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div id="statusFooter"></div>
+    </footer>
+  </div>
+
+<script src="/static/main.js"></script>
+</body>
+</html>

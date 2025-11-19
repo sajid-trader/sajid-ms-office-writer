@@ -1,0 +1,30 @@
+# Virtualenv
+venv/
+env/
+pyvenv.cfg
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs and runtime
+sajid_server.log
+*.log
+instance/
+*.sqlite3
+*.db
+
+# Static uploads (do not track user uploads)
+static/uploads/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets
+.env
+ngrok.yml
+*.pem

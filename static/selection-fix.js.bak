@@ -1,0 +1,5 @@
+/*
+ selection-fix.js is deprecated in this patched setup.
+ The main logic is moved/merged into static/main.js to avoid duplicate handlers.
+ Keeping this file as a harmless placeholder so old references won't break.
+*/
