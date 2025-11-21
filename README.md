@@ -24,7 +24,7 @@ Email: buruk6039@gmail.com
 WhatsApp: +91 95115 21113
 
 # For visit demo app URL 
-https://sajid-ms-office-writer-1.onrender.com
+https://sajid-ms-office-writer-2.onrender.com
 
 # This app diploy & run on Render with the GitHub repository ![Screenshot_20251121_113833](https://github.com/user-attachments/assets/cee6355a-a500-4ac4-9595-a97830c4cf4f)
 ![Screenshot_2025_1121_111828](https://github.com/user-attachments/assets/c9c77be2-9007-40ec-9f6b-ab81c1c49695)
@@ -38,7 +38,7 @@ Those without a laptop or PC can write their documents in this app, arrange them
 MIT © 2025 Sajid Hussain
 =======
 Mobile-first, Flask-based web writer — create, edit and export documents (PDF/RTF).  
-**Live demo:** https://sajid-ms-office-writer-1.onrender.com
+**Live demo:** https://sajid-ms-office-writer-2.onrender.com
 
 ---
 
@@ -48,46 +48,3 @@ Mobile-first, Flask-based web writer — create, edit and export documents (PDF/
 
 > Note: A few minor UI quirks are intentionally left in the demo for learning/discussion purposes. No sensitive keys or secrets are included in this repo.
 
----
-
-## Highlights / Features
-
-- Mobile-friendly rich-text editor (formatting, highlights, lists)  
-- Insert images, tables, stickers and special characters  
-- Draw/hand-draw tool and export drawing as embedded PNG  
-- Autosave and file management endpoints (`/api/save`, `/api/list`, `/api/delete`)  
-- Export to PDF (uses `wkhtmltopdf` when available; falls back to saved HTML)  
-- Quick to run locally and deployable on Render / any VPS with Python
-
----
-
-## Quick start (developer)
-
-```bash
-git clone https://github.com/sajid-trader/sajid-ms-office-writer.git
-cd sajid-ms-office-writer
-
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# dev:
-python3 app.py
-
-# production (recommended):
-gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app
-
-
----
-
-## 2) Stage, commit and push (एक ही बार में चलाओ)
-
-```bash
-# (repo root में होना चाहिए)
-git add README.md docs/screenshot.jpg 2>/dev/null || true
-git commit -m "docs: replace README with polished overview, add live demo & contact" || echo "Nothing to commit or commit failed"
-git push origin main
-
-# requires GitHub CLI & authenticated
-gh repo edit sajid-trader/sajid-ms-office-writer --add-topic flask,python,termux,android,pdf,editor,wkhtmltopdf,web-app,mobile
->>>>>>> chore: local updates (README and cleanup backup file)
