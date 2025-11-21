@@ -11,10 +11,6 @@ A mobile-friendly Flask-based MS-Office-like writer app that runs on Termux/Ubun
    OR
    gunicorn -w 4 -b 0.0.0.0:8000 wsgi:app  # production
 
-## Notes
-- For PDF export install system package wkhtmltopdf.
-- Do NOT commit `.env` or `static/uploads/` or `venv/`.
-
 # If contact me please visit my active account 
 Author: Sajid Hussain
 
