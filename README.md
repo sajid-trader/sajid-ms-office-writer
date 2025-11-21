@@ -44,11 +44,3 @@ MIT © 2025 Sajid Hussain
 Mobile-first, Flask-based web writer — create, edit and export documents (PDF/RTF).  
 **Live demo:** https://sajid-ms-office-writer-2.onrender.com
 
----
-
-## Demo screenshot
-
-![Demo screenshot](docs/screenshot.jpg)
-
-> Note: A few minor UI quirks are intentionally left in the demo for learning/discussion purposes. No sensitive keys or secrets are included in this repo.
-
