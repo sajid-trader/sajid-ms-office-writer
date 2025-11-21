@@ -1,7 +1,6 @@
-![Screenshot_2025_1120_181356](https://github.com/user-attachments/assets/7b82bb93-2e77-4389-9138-0bf5dd3c979a)
+
 # Sajid MS Office Writer
 
-<<<<<<< HEAD
 A mobile-friendly Flask-based MS-Office-like writer app that runs on Termux/Ubuntu and can export documents to PDF/RTF.
 
 ## Quick start
@@ -26,7 +25,12 @@ WhatsApp: +91 95115 21113
 # For visit demo app URL 
 https://sajid-ms-office-writer-2.onrender.com
 
-# This app diploy & run on Render with the GitHub repository ![Screenshot_20251121_113833](https://github.com/user-attachments/assets/cee6355a-a500-4ac4-9595-a97830c4cf4f)
+# This app diploy & run on Render with the GitHub repository
+
+![Screenshot_2025_1120_181356](https://github.com/user-attachments/assets/7b82bb93-2e77-4389-9138-0bf5dd3c979a)
+
+![Screenshot_20251121_113833](https://github.com/user-attachments/assets/cee6355a-a500-4ac4-9595-a97830c4cf4f)
+
 ![Screenshot_2025_1121_111828](https://github.com/user-attachments/assets/c9c77be2-9007-40ec-9f6b-ab81c1c49695)
 
 
